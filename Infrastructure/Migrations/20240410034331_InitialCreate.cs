@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
@@ -22,7 +20,7 @@ namespace Infrastructure.Migrations
                     Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Preço = table.Column<decimal>(type: "decimal(10,4)", precision: 10, scale: 4, nullable: false),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
-                    DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 4, 8, 22, 3, 54, 126, DateTimeKind.Local).AddTicks(7659)),
+                    DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 4, 10, 0, 43, 30, 680, DateTimeKind.Local).AddTicks(9609)),
                     DataAlteração = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
