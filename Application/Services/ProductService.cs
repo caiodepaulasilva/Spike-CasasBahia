@@ -15,8 +15,8 @@ namespace Application.Services
         public async Task<ProductDto> AddProduct(ProductDto productDto)
         {
             var exists = await _unitOfWork.ProductRepository.ExistAsync(x => x.Id == productDto.Id);
-            //if (exists)
-            //    throw new ConflictException("The permission type already exist.");
+            if (exists)
+                throw new ConflictException("The product already exist.");
 
             var product = _mapper.Map<Product>(productDto);
 
@@ -26,46 +26,46 @@ namespace Application.Services
             return _mapper.Map<ProductDto>(product);
         }
 
-        public async Task UpdateProduct(ProductDto product)
+        public async Task UpdateProduct(ProductDto productDto)
         {
-            var exists = await _unitOfWork.ProductRepository.ExistAsync(x => x.Id == product.Id);
+            var exists = await _unitOfWork.ProductRepository.ExistAsync(x => x.Id == productDto.Id);
             if (!exists)
-                throw new ConflictException("The permission type doesn't exist.");
+                throw new ConflictException("The product type doesn't exist.");
 
-            var permissionType = _mapper.Map<Product>(product);
-            await _unitOfWork.ProductRepository.UpdateAsync(permissionType);
+            var product = _mapper.Map<Product>(productDto);
+            await _unitOfWork.ProductRepository.UpdateAsync(product);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task DeleteProduct(int permissionTypeId)
+        public async Task DeleteProduct(int productId)
         {
-            var exists = await _unitOfWork.ProductRepository.ExistAsync(x => x.Id == permissionTypeId);
+            var exists = await _unitOfWork.ProductRepository.ExistAsync(x => x.Id == productId);
             if (!exists)
-                throw new NotFoundException("The permission type doesn't exist.");
+                throw new NotFoundException("The product type doesn't exist.");
 
-            var permissionType = await _unitOfWork.ProductRepository.GetByIdAsync(permissionTypeId);
-            await _unitOfWork.ProductRepository.DeleteAsync(permissionType);
+            var product = await _unitOfWork.ProductRepository.GetByIdAsync(productId);
+            await _unitOfWork.ProductRepository.DeleteAsync(product);
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<ProductDto> GetProduct(int permissionTypeId)
+        public async Task<ProductDto> GetProduct(int productId)
         {
-            var exists = await _unitOfWork.ProductRepository.ExistAsync(x => x.Id == permissionTypeId);
+            var exists = await _unitOfWork.ProductRepository.ExistAsync(x => x.Id == productId);
             if (!exists)
-                throw new NotFoundException("The permission type doesn't exist.");
+                throw new NotFoundException("The product type doesn't exist.");
 
-            var permissionType = await _unitOfWork.ProductRepository.GetByIdAsync(permissionTypeId);
-            var product = _mapper.Map<ProductDto>(permissionType);
+            var product = await _unitOfWork.ProductRepository.GetByIdAsync(productId);
+            var productDto = _mapper.Map<ProductDto>(product);
 
-            return product;
+            return productDto;
         }
 
         public async Task<IEnumerable<ProductDto>> GetProducts()
         {
-            var permissionsType = await _unitOfWork.ProductRepository.GetAllAsync();
-            var permissionsTypeDto = _mapper.Map<IEnumerable<ProductDto>>(permissionsType);
+            var products = await _unitOfWork.ProductRepository.GetAllAsync();
+            var productsDto = _mapper.Map<IEnumerable<ProductDto>>(products);
 
-            return permissionsTypeDto;
+            return productsDto;
         }
     }
 }

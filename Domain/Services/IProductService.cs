@@ -4,9 +4,9 @@ namespace Domain.Services;
 
 public interface IProductService
 {
-    Task<ProductDto> AddProduct(ProductDto permissionTypeDto);
-    Task UpdateProduct(ProductDto permissionTypeDto);
-    Task DeleteProduct(int permissionTypeId);
-    Task<ProductDto> GetProduct(int permissionTypeId);
+    Task<ProductDto> AddProduct(ProductDto productDto);
+    Task UpdateProduct(ProductDto productDto);
+    Task DeleteProduct(int productId);
+    Task<ProductDto> GetProduct(int productId);
     Task<IEnumerable<ProductDto>> GetProducts();
 }
