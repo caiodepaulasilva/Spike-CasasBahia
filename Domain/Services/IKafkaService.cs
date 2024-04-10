@@ -1,6 +1,9 @@
-﻿namespace Domain.Services;
+﻿using Domain.DTOs;
+using Domain.Entities;
+
+namespace Domain.Services;
 
 public interface IKafkaService
 {
-    Object SendToKafka(string topic, string message);
+    Task ProduceAsync(string topic, ProductDto product);
 }

@@ -1,29 +1,36 @@
 ﻿using Domain.Services;
 using Confluent.Kafka;
+using Microsoft.Extensions.Configuration;
+using Domain.DTOs;
+using Domain.Entities;
+using System.Text.Json;
 
 namespace Application.Services
 {
-    public class KafkaService(): IKafkaService
+    public class KafkaService: IKafkaService
     {
-        private readonly ProducerConfig config = new ProducerConfig { BootstrapServers = "localhost:9093" };        
+        private readonly IConfiguration _configuration;
+        private readonly IProducer<string, string> _producer;
 
-        public Object SendToKafka(string topic, string message)
+        public KafkaService(IConfiguration configuration)
         {
-            using (var producer =
-                 new ProducerBuilder<Null, string>(config).Build())
+            _configuration = configuration;
+            var producerconfig = new ProducerConfig
             {
-                try
-                {
-                    return producer.ProduceAsync(topic, new Message<Null, string> { Value = message })
-                        .GetAwaiter()
-                        .GetResult();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"Oops, something went wrong: {e}");
-                }
-            }
-            return null;
+                BootstrapServers = _configuration["Kafka:BootstrapServers"]
+            };
+
+            _producer = new ProducerBuilder<string, string>(producerconfig).Build();
+        }
+
+        public async Task ProduceAsync(string topic, ProductDto product)
+        {            
+            var kafkamessage = new Message<string, string> 
+            {                
+                Value = JsonSerializer.Serialize(product)
+            };
+
+            await _producer.ProduceAsync(topic, kafkamessage);
         }
 
     }
