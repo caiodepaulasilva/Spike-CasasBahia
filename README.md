@@ -69,10 +69,12 @@ docker-compose up -d
 | Trust server certificate       | checked                             |
 
 **Criar a estrutura da base de dados:**
-1. Uma vez no Visual Studio, no terminal PowerShell do Desenvolvedor, na raiz do projeto, digite:
+2. Uma vez no Visual Studio, no terminal PowerShell do Desenvolvedor, na raiz do projeto, digite:
 ```
+dotnet clean
 dotnet ef migrations add InitialCreate --project Infrastructure --startup-project Spike-CasasBahia
 ```
+Após a execução destas instrunções, deve ser possível executar o projeto normalmente.
 
 ## Licença
 
