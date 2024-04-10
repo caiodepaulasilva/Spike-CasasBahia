@@ -6,6 +6,7 @@ using Infrastructure.Database;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Spike_CasasBahia.Middlewares;
 using System.Reflection;
 
 
@@ -85,7 +86,7 @@ namespace Spike_CasasBahia
                 app.UseHsts();
             }
 
-            //app.UseMiddleware<ExceptionHandler>();
+            app.UseMiddleware<ExceptionHandler>();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

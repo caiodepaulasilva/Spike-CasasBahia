@@ -30,7 +30,7 @@ namespace Application.Services
         {
             var exists = await _unitOfWork.ProductRepository.ExistAsync(x => x.Id == productDto.Id);
             if (!exists)
-                throw new ConflictException("The product type doesn't exist.");
+                throw new ConflictException("The product doesn't exist.");
 
             var product = _mapper.Map<Product>(productDto);
             await _unitOfWork.ProductRepository.UpdateAsync(product);
@@ -52,7 +52,7 @@ namespace Application.Services
         {
             var exists = await _unitOfWork.ProductRepository.ExistAsync(x => x.Id == productId);
             if (!exists)
-                throw new NotFoundException("The product type doesn't exist.");
+                throw new NotFoundException("The product doesn't exist.");
 
             var product = await _unitOfWork.ProductRepository.GetByIdAsync(productId);
             var productDto = _mapper.Map<ProductDto>(product);
