@@ -18,8 +18,9 @@ Este trabalho foi desenvolvido como parte de um processo seletivo no qual o obje
 - Domínio do framework .NET 8.0
 - Domínio da capacidade analitica, de abstração e de construção de um algoritmo que reflita as boas práticas de programção e o uso razoável da linguagém C# para construção de APIs.
 
-**Anexo**: O exerício proposto consta neste documento: [Estudo de Caso.pdf](https://github.com/caiodepaulasilva/Prova-Deliver-IT/files/14924354/Estudo.de.Caso.pdf)
-<br><br>
+**Anexo**: O exerício proposto consta neste documento: [Estudo de Caso.pdf](https://github.com/caiodepaulasilva/Spike-CasasBahia/files/15151307/Estudo.de.Caso.pdf)
+<br><b>
+
 
 ## Requerimentos
  O projeto tem uma construção parcialmente simples e, portanto, são necessárias apenas algumas poucas dependências para a sua execução. São esperados os seguintes requerimentos:
@@ -37,7 +38,7 @@ O projeto necessita que duas dependências diretas sejam consideradas antes de s
 **Clonar o projeto:**
 ```
 cd "diretorio de sua preferencia"
-git clone https://github.com/caiodepaulasilva/Prova-Deliver-IT.git
+git clone https://github.com/caiodepaulasilva/Spike-CasasBahia.git
 ```
 
 **Criar Container Kafka:**
