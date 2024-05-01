@@ -16,7 +16,7 @@ Este trabalho foi desenvolvido como parte de um processo seletivo no qual o obje
 - Domínio de integração com SQL Server
 - Domínio de integração com Kafka
 - Domínio do framework .NET 8.0
-- Domínio da capacidade analitica, de abstração e de construção de um algoritmo que reflita as boas práticas de programção e o uso razoável da linguagém C# para construção de APIs.
+- Domínio da capacidade analítica, de abstração e de construção de um algoritmo que reflita as boas práticas de programação e o uso razoável da linguagem C# para construção de APIs.
 
 **Anexo**: O exerício proposto consta neste documento: [Estudo de Caso.pdf](https://github.com/caiodepaulasilva/Spike-CasasBahia/files/15151307/Estudo.de.Caso.pdf)
 <br><br>
